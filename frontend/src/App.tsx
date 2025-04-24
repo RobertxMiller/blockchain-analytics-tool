@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import WalletSearch from './components/WalletSearch';
 
 function App() {
   return (
@@ -9,10 +10,7 @@ function App() {
         <p>Analyze blockchain transactions and wallet activities</p>
       </header>
       <main>
-        <div className="container">
-          <h2>Welcome to Blockchain Analytics</h2>
-          <p>Start tracking and analyzing blockchain data across multiple networks.</p>
-        </div>
+        <WalletSearch />
       </main>
     </div>
   );

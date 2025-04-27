@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './WalletSearch.css';
+import TransactionChart from './TransactionChart';
 
 interface WalletData {
   address: string;
@@ -75,44 +76,51 @@ const WalletSearch: React.FC = () => {
       </div>
 
       {walletData && (
-        <div className="wallet-results">
-          <h3>Wallet Information</h3>
-          <div className="wallet-info">
-            <div className="info-row">
-              <span className="label">Address:</span>
-              <span className="value">{walletData.address}</span>
-            </div>
-            <div className="info-row">
-              <span className="label">Type:</span>
-              <span className="value">
-                {walletData.is_contract ? 'Smart Contract' : 'Wallet Address'}
-              </span>
-            </div>
-            <div className="info-row">
-              <span className="label">Network:</span>
-              <span className="value">{walletData.network}</span>
-            </div>
-            <div className="info-row">
-              <span className="label">Balance:</span>
-              <span className="value">
-                {walletData.current_balance !== null 
-                  ? `${walletData.current_balance.toFixed(4)} ETH`
-                  : 'N/A'
-                }
-              </span>
-            </div>
-            <div className="info-row">
-              <span className="label">Transactions:</span>
-              <span className="value">{walletData.transaction_count}</span>
-            </div>
-            <div className="info-row">
-              <span className="label">First Seen:</span>
-              <span className="value">
-                {new Date(walletData.first_seen).toLocaleDateString()}
-              </span>
+        <>
+          <div className="wallet-results">
+            <h3>Wallet Information</h3>
+            <div className="wallet-info">
+              <div className="info-row">
+                <span className="label">Address:</span>
+                <span className="value">{walletData.address}</span>
+              </div>
+              <div className="info-row">
+                <span className="label">Type:</span>
+                <span className="value">
+                  {walletData.is_contract ? 'Smart Contract' : 'Wallet Address'}
+                </span>
+              </div>
+              <div className="info-row">
+                <span className="label">Network:</span>
+                <span className="value">{walletData.network}</span>
+              </div>
+              <div className="info-row">
+                <span className="label">Balance:</span>
+                <span className="value">
+                  {walletData.current_balance !== null 
+                    ? `${walletData.current_balance.toFixed(4)} ETH`
+                    : 'N/A'
+                  }
+                </span>
+              </div>
+              <div className="info-row">
+                <span className="label">Transactions:</span>
+                <span className="value">{walletData.transaction_count}</span>
+              </div>
+              <div className="info-row">
+                <span className="label">First Seen:</span>
+                <span className="value">
+                  {new Date(walletData.first_seen).toLocaleDateString()}
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+          
+          <TransactionChart 
+            transactions={walletData.recent_transactions} 
+            walletAddress={walletData.address}
+          />
+        </>
       )}
     </div>
   );

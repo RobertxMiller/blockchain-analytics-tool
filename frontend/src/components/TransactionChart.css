@@ -1,0 +1,137 @@
+.transaction-chart {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.transaction-chart h3 {
+  margin-bottom: 1.5rem;
+  color: #333;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 0.5rem;
+}
+
+.no-data {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  padding: 2rem;
+}
+
+.chart-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.chart-section {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.chart-section h4 {
+  margin-bottom: 1rem;
+  color: #555;
+  text-align: center;
+}
+
+.transaction-list {
+  border-top: 1px solid #eee;
+  padding-top: 1.5rem;
+}
+
+.transaction-list h4 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.transaction-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 6px;
+  border-left: 4px solid transparent;
+}
+
+.transaction-item.received {
+  background-color: #d4edda;
+  border-left-color: #28a745;
+}
+
+.transaction-item.sent {
+  background-color: #f8d7da;
+  border-left-color: #dc3545;
+}
+
+.tx-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.tx-hash {
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.tx-type {
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+.tx-type.received {
+  color: #28a745;
+}
+
+.tx-type.sent {
+  color: #dc3545;
+}
+
+.tx-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.tx-value {
+  font-weight: 600;
+  font-family: monospace;
+  color: #333;
+}
+
+.tx-date {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .chart-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .transaction-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .tx-details {
+    align-items: flex-start;
+  }
+}
